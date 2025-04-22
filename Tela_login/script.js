@@ -28,7 +28,8 @@ async function iniciarLogin() {
         return;
     }
 
-    window.location.href = '../Tela_login/index.html';
+    window.location.href = '../Tela_Home/index.html';
+
 }
 
 document.querySelector('form').addEventListener('submit', (e) => {
