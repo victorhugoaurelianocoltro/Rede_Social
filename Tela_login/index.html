@@ -8,26 +8,29 @@
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header class="top-bar">
             <div class="logo">
-                <span class="arrow">&#10094;</span>MOMENTS
+                <span class="arrow">&#10094;</span> MOMENTS
             </div>
-        </div>
+        </header>
+
         <h1>LOGIN</h1>
-        <form>
-            <input type="text" placeholder="Insira seu usuário ou email" required>
-            <input type="password" placeholder="Insira sua Senha" required>
+
+        <form id="loginForm">
+            <input type="text" id="email" placeholder="Insira seu usuário ou email" required>
+            <input type="password" id="senha" placeholder="Insira sua Senha" required>
             <a href="#" class="forgot-password">Esqueci minha senha</a>
             <button type="submit">Login</button>
         </form>
+
         <p class="register">
             Não possui uma conta? <a href="../Tela_Cadastro/index.html">Se REGISTRE</a> agora
         </p>
     </div>
 
     <script src="script.js"></script>
-
 </body>
 </html>
+
 
 

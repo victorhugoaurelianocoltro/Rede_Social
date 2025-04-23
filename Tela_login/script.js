@@ -28,8 +28,9 @@ async function iniciarLogin() {
         return;
     }
 
+    localStorage.setItem('usuarioEmail', email);
+    localStorage.setItem('idUsuario', dados.id); // <=== aqui está a chave
     window.location.href = '../Tela_Home/index.html';
-
 }
 
 document.querySelector('form').addEventListener('submit', (e) => {

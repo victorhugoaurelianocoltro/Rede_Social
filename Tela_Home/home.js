@@ -151,5 +151,10 @@ function abrirModalNovaPublicacao() {
       container.innerHTML = "";
       carregarPublicacoes();
     });
-  }
+  }debugger
+
+  document.getElementById('perfil-btn').addEventListener('click', () => {
+    window.location.href = '../Tela_perfil/index.html';
+});
+
   
