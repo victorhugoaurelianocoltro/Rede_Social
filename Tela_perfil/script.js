@@ -5,30 +5,38 @@ window.onload = function() {
     console.log('ID recuperado (onload) na Tela de Perfil:', usuarioIdNoPerfilOnload);
 
     if (!usuarioIdNoPerfilOnload) {
+        console.log('usuarioId não encontrado, redirecionando para login.');
         window.location.href = '../Tela_Login/index.html';
         return;
     }
 
-    carregarPerfil();
+    carregarPerfil(usuarioIdNoPerfilOnload); // Passa o ID lido do localStorage
 };
 
-async function carregarPerfil() {
-    const usuarioIdParaCarregar = localStorage.getItem('usuarioId');
-    console.log('ID antes da requisição:', usuarioIdParaCarregar);
+async function carregarPerfil(usuarioId) { // Recebe o ID como parâmetro
+    console.log('Função carregarPerfil sendo executada com ID:', usuarioId);
     try {
-        const resposta = await fetch(`https://back-spider.vercel.app/user/pesquisarUser/${usuarioIdParaCarregar}`);
+        const resposta = await fetch(`https://back-spider.vercel.app/user/pesquisarUser/${usuarioId}`);
         const dados = await resposta.json();
 
-        if (!resposta.ok) throw new Error(dados.mensagem || 'Erro ao carregar perfil');
+        console.log('Dados recebidos da API:', dados); // Verifique a resposta da API
 
-        document.getElementById('nome').value = dados.nome;
-        document.getElementById('email').value = dados.email;
-        document.getElementById('apelido').value = dados.nome; // Usando o nome como apelido por enquanto
-        document.querySelector('.photo-preview').style.backgroundImage = `url('${dados.imagemPerfil}')`;
+        if (!resposta.ok) {
+            console.error('Erro ao carregar perfil:', dados.mensagem || 'Erro desconhecido');
+            throw new Error(dados.mensagem || 'Erro ao carregar perfil');
+        }
+
+        document.getElementById('nome').value = dados.nome || '';
+        document.getElementById('email').value = dados.email || '';
+        document.getElementById('apelido').value = dados.nome || ''; // Usando o nome como apelido por enquanto
+        const fotoPerfilElement = document.querySelector('.photo-preview');
+        if (fotoPerfilElement) {
+            fotoPerfilElement.style.backgroundImage = `url('${dados.imagemPerfil || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'}')`; // Adicionado um valor padrão para evitar erros
+        }
 
     } catch (error) {
-        console.error(error);
-        alert('Erro ao carregar dados do perfil.');
+        console.error('Erro ao carregar dados do perfil:', error);
+        alert('Erro ao carregar dados do perfil. Tente novamente mais tarde.');
     }
 }
 
@@ -98,4 +106,8 @@ async function excluirConta() {
         console.error(error);
         alert('Erro ao excluir a conta.');
     }
+}
+
+function voltar() {
+    window.history.back();
 }
