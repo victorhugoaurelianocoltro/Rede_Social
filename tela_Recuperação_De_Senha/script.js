@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const emailInput = document.getElementById('email');
     const wordKeyInput = document.getElementById('wordKey');
     const mensagemElement = document.getElementById('mensagem');
-    const voltarLoginBtn = document.getElementById('voltarLoginBtn'); // Novo botão
+    const voltarLoginBtn = document.getElementById('voltarLoginBtn');
 
     recuperarSenhaBtn.addEventListener('click', async () => {
         const email = emailInput.value;
@@ -51,7 +51,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // Event listener para o botão "Voltar ao Login"
     voltarLoginBtn.addEventListener('click', () => {
         window.location.href = '../Tela_login/index.html';
     });

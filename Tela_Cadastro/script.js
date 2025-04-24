@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const email = document.getElementById('email').value;
         const senha = document.getElementById('novaSenha').value;
         const confirmarSenha = document.getElementById('confirmarSenha').value;
-        const senhaRecuperacao = document.getElementById('senhaRecuperacao').value; // Captura a senha de recuperação do input
+        const senhaRecuperacao = document.getElementById('senhaRecuperacao').value; 
         const premium = document.getElementById('premium').value;
         const imagemPerfil = document.getElementById('imagemPerfil').value || "https://cdn-icons-png.flaticon.com/512/149/149071.png"; // Valor padrão se não for fornecido
 

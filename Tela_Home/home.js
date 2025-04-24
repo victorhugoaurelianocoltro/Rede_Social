@@ -166,8 +166,6 @@ async function enviarComentario() {
         });
         if (resposta.ok) {
             document.getElementById("novo-comentario").value = "";
-            // Não precisa recarregar os comentários individualmente aqui,
-            // carregarPublicacoes() já atualiza a visualização rápida.
             carregarPublicacoes();
         } else {
             const data = await resposta.json();

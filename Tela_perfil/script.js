@@ -10,16 +10,16 @@ window.onload = function() {
         return;
     }
 
-    carregarPerfil(usuarioIdNoPerfilOnload); // Passa o ID lido do localStorage
+    carregarPerfil(usuarioIdNoPerfilOnload);
 };
 
-async function carregarPerfil(usuarioId) { // Recebe o ID como parâmetro
+async function carregarPerfil(usuarioId) { 
     console.log('Função carregarPerfil sendo executada com ID:', usuarioId);
     try {
         const resposta = await fetch(`https://back-spider.vercel.app/user/pesquisarUser/${usuarioId}`);
         const dados = await resposta.json();
 
-        console.log('Dados recebidos da API:', dados); // Verifique a resposta da API
+        console.log('Dados recebidos da API:', dados);
 
         if (!resposta.ok) {
             console.error('Erro ao carregar perfil:', dados.mensagem || 'Erro desconhecido');
@@ -28,7 +28,7 @@ async function carregarPerfil(usuarioId) { // Recebe o ID como parâmetro
 
         document.getElementById('nome').value = dados.nome || '';
         document.getElementById('email').value = dados.email || '';
-        document.getElementById('apelido').value = dados.nome || ''; // Usando o nome como apelido por enquanto
+        document.getElementById('apelido').value = dados.nome || ''; 
         const fotoPerfilElement = document.querySelector('.photo-preview');
         if (fotoPerfilElement) {
             fotoPerfilElement.style.backgroundImage = `url('${dados.imagemPerfil || 'https://cdn-icons-png.flaticon.com/512/149/149071.png'}')`; // Adicionado um valor padrão para evitar erros

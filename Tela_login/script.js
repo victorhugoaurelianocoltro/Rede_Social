@@ -42,12 +42,12 @@ loginForm.addEventListener('submit', async (event) => {
 
             const users = await responseUsers.json();
             console.log('Lista de usuários recebida:', users);
-            console.log('Buscando usuário com email:', email); // LOG ADICIONADO
+            console.log('Buscando usuário com email:', email);
 
             const loggedInUser = users.find(user => user.email === email);
 
             if (loggedInUser && loggedInUser.id) {
-                console.log('Usuário encontrado:', loggedInUser); // LOG ADICIONADO
+                console.log('Usuário encontrado:', loggedInUser); 
                 localStorage.setItem('usuarioId', loggedInUser.id);
                 localStorage.setItem('usuarioNome', loggedInUser.nome);
                 localStorage.setItem('usuarioEmail', loggedInUser.email);
