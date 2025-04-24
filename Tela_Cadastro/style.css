@@ -1,82 +1,89 @@
 body {
     font-family: sans-serif;
-    background-color: #f0f0f0;
+    background-color: #f0f8ff; /* Um tom de azul claro */
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
 }
 
 .container {
-    width: 400px;
-    background-color: rgb(184, 200, 250);
+    background-color: #e6f7ff; /* Um tom mais claro de azul */
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 40px; /* Aumentar o padding interno */
+    box-sizing: border-box;
+    width: 400px; /* Manter a largura */
 }
 
-i {
-    text-align: left;
-    padding: 20px;
-    width: 620px;
-  
+.header {
+    margin-bottom: 30px; /* Aumentar a margem inferior */
 }
 
-.cadastro-box {
-    padding: 20px;
+.back-button {
+    display: flex;
+    align-items: center;
+    color: #007bff;
+    text-decoration: none;
+    font-size: 1.2em;
+    margin-bottom: 20px; /* Aumentar a margem inferior */
+}
+
+.back-button:hover {
+    text-decoration: underline;
+}
+
+.back-button svg {
+    margin-right: 8px; /* Espaço entre a seta e o texto */
+    width: 20px;
+    height: 20px;
+    fill: #007bff;
 }
 
 .cadastro-box h1 {
     text-align: center;
-    margin-bottom: 20px;
+    margin-bottom: 35px; /* Aumentar a margem inferior */
+    color: #333;
+    font-size: 2.5em; /* Aumentar o tamanho da fonte do título */
+    font-weight: bold;
 }
 
-.cadastro-box input[type="text"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
+.cadastro-box input[type="text"],
+.cadastro-box input[type="email"],
+.cadastro-box input[type="password"],
+.cadastro-box select,
+.cadastro-box input[type="url"] {
+    width: calc(100% - 20px);
+    padding: 12px; /* Aumentar o padding dos inputs */
+    margin-bottom: 20px; /* Aumentar a margem inferior dos inputs */
     border: 1px solid #ddd;
-    border-radius: 4px;
+    border-radius: 6px; /* Bordas mais arredondadas */
     box-sizing: border-box;
+    font-size: 1em;
 }
 
-.cadastro-box input[type="email"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.cadastro-box input[type="date"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.cadastro-box input[type="password"] {
-    width: calc(100% - 22px);
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    box-sizing: border-box;
+.cadastro-box label {
+    display: block;
+    margin-bottom: 5px;
+    color: #555;
+    font-weight: bold;
 }
 
 .buttons {
     display: flex;
     justify-content: space-between;
+    margin-top: 30px; /* Aumentar a margem superior dos botões */
 }
 
 .buttons button {
-    padding: 10px 20px;
+    padding: 12px 25px; /* Aumentar o padding dos botões */
     border: none;
-    border-radius: 4px;
+    border-radius: 6px; /* Bordas mais arredondadas */
     cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
 }
 
 .buttons .voltar {
@@ -84,7 +91,15 @@ i {
     color: #333;
 }
 
+.buttons .voltar:hover {
+    background-color: #e0e0e0;
+}
+
 .buttons .cadastrar {
     background-color: #007bff;
     color: white;
+}
+
+.buttons .cadastrar:hover {
+    background-color: #0056b3;
 }

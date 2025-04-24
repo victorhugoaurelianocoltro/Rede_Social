@@ -1,49 +1,49 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Home</title>
-  <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Home</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="top-bar">
-    <div class="logo">
-        <span class="arrow">&#10094;</span>MOMENTS
+    <header class="top-bar">
+        <div class="logo">
+            <span class="arrow">&#10094;</span>MOMENTS
+        </div>
+        <button id="perfil-btn">Perfil</button>
+    </header>
+
+    <div id="comentario-modal">
+        <div class="modal-content">
+            <h3>Comentários</h3>
+            <div id="comentarios-lista"></div>
+            <textarea id="novo-comentario" placeholder="Escreva um comentário..."></textarea>
+            <div class="modal-buttons">
+                <button onclick="fecharModal()">Fechar</button>
+                <button onclick="enviarComentario()">Enviar</button>
+            </div>
+        </div>
     </div>
-    <button id="perfil-btn">Perfil</button>
-  </header>
 
-  <div id="comentario-modal">
-    <div class="modal-content">
-      <h3>Comentários</h3>
-      <div id="comentarios-lista"></div>
-      <textarea id="novo-comentario" placeholder="Escreva um comentário..."></textarea>
-      <div class="modal-buttons">
-        <button onclick="fecharModal()">Fechar</button>
-        <button onclick="enviarComentario()">Enviar</button>
-      </div>
+    <button id="btn-nova-publi" onclick="abrirModalNovaPublicacao()">+</button>
+
+    <div id="modal-nova-publicacao">
+        <div class="modal-content">
+            <h3>Nova Publicação</h3>
+            <input type="text" id="input-local" placeholder="Local da publicação"><br>
+            <input type="text" id="input-img" placeholder="URL da imagem"><br>
+            <textarea id="input-descricao" placeholder="Descrição"></textarea>
+            <div class="modal-buttons">
+                <button onclick="fecharModalNovaPublicacao()">Cancelar</button>
+                <button onclick="enviarNovaPublicacao()">Publicar</button>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- Botão Flutuante -->
-<button id="btn-nova-publi" onclick="abrirModalNovaPublicacao()">+</button>
+    <div class="feed">
+        </div>
 
-<!-- Modal Nova Publicação -->
-<div id="modal-nova-publicacao">
-  <div class="modal-content">
-    <h3>Nova Publicação</h3>
-    <input type="text" id="input-local" placeholder="Local da publicação"><br>
-    <input type="text" id="input-img" placeholder="URL da imagem"><br>
-    <textarea id="input-descricao" placeholder="Descrição"></textarea>
-    <div class="modal-buttons">
-      <button onclick="fecharModalNovaPublicacao()">Cancelar</button>
-      <button onclick="enviarNovaPublicacao()">Publicar</button>
-    </div>
-  </div>
-</div>
-
-
-  <script src="home.js"></script>
+    <script src="home.js"></script>
 </body>
 </html>

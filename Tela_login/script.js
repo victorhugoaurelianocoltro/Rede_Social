@@ -1,39 +1,53 @@
 'use strict';
 
-async function fazerLogin(email, senha) {
-    const url = 'https://back-spider.vercel.app/login';
+console.log('Tela de Login carregada.');
 
-    const resposta = await fetch(url, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email, senha })
-    });
+const loginForm = document.getElementById('loginForm');
 
-    const dados = await resposta.json();
+loginForm.addEventListener('submit', async (event) => {
+    event.preventDefault();
 
-    return { sucesso: resposta.ok, dados };
-}
+    const email = document.getElementById('email').value;
+    const senha = document.getElementById('senha').value;
 
-async function iniciarLogin() {
-    const inputs = document.querySelectorAll('input');
-    const email = inputs[0].value;
-    const senha = inputs[1].value;
-
-    const { sucesso, dados } = await fazerLogin(email, senha);
-
-    if (!sucesso) {
-        alert(dados.mensagem || 'Falha no login');
+    if (!email || !senha) {
+        alert('Por favor, preencha todos os campos.');
         return;
     }
 
-    localStorage.setItem('usuarioEmail', email);
-    localStorage.setItem('idUsuario', dados.id); // <=== aqui está a chave
-    window.location.href = '../Tela_Home/index.html';
-}
+    const corpo = {
+        email,
+        senha
+    };
 
-document.querySelector('form').addEventListener('submit', (e) => {
-    e.preventDefault();
-    iniciarLogin();
+    try {
+        const response = await fetch('https://back-spider.vercel.app/user/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(corpo)
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.message || 'Erro ao fazer login');
+        }
+
+        const userData = await response.json();
+        console.log('Dados do usuário recebidos no login:', userData); // VERIFIQUE ESTE LOG
+
+        // Armazenar informações do usuário no localStorage
+        localStorage.setItem('usuarioId', userData.id);
+        localStorage.setItem('usuarioNome', userData.nome);
+        localStorage.setItem('usuarioEmail', userData.email);
+        localStorage.setItem('usuarioImagemPerfil', userData.imagemPerfil);
+        // Adicione outras informações que você precisar
+
+        console.log('usuarioId armazenado no localStorage:', localStorage.getItem('usuarioId')); // VERIFIQUE ESTE LOG
+
+        alert('Login realizado com sucesso!');
+        window.location.href = '../home/index.html';
+
+    } catch (error) {
+        alert(`Erro ao fazer login: ${error.message}`);
+    }
 });

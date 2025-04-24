@@ -1,22 +1,23 @@
 'use strict';
 
 document.addEventListener('DOMContentLoaded', () => {
-    const form = document.querySelector('form');
+    const form = document.getElementById('cadastroForm');
     const voltarBtn = document.querySelector('.voltar');
     const cadastrarBtn = document.querySelector('.cadastrar');
 
-    cadastrarBtn.addEventListener('click', async (event) => {
+    form.addEventListener('submit', async (event) => {
         event.preventDefault();
 
-        const inputs = form.querySelectorAll('input');
-        const nome = inputs[0].value;
-        const email = inputs[1].value;
-        const senhaRecuperacao = inputs[2].value; // usaremos data como senha de recuperação
-        const senha = inputs[3].value;
-        const confirmarSenha = inputs[4].value;
+        const nome = document.getElementById('nomeCompleto').value;
+        const email = document.getElementById('email').value;
+        const senha = document.getElementById('novaSenha').value;
+        const confirmarSenha = document.getElementById('confirmarSenha').value;
+        const senhaRecuperacao = document.getElementById('senhaRecuperacao').value; // Captura a senha de recuperação do input
+        const premium = document.getElementById('premium').value;
+        const imagemPerfil = document.getElementById('imagemPerfil').value || "https://cdn-icons-png.flaticon.com/512/149/149071.png"; // Valor padrão se não for fornecido
 
-        if (!nome || !email || !senha || !confirmarSenha) {
-            alert('Preencha todos os campos.');
+        if (!nome || !email || !senha || !confirmarSenha || !senhaRecuperacao) {
+            alert('Preencha todos os campos obrigatórios.');
             return;
         }
 
@@ -29,8 +30,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nome,
             email,
             senha,
-            premium: "0",
-            imagemPerfil: "https://cdn-icons-png.flaticon.com/512/149/149071.png",
+            premium,
+            imagemPerfil,
             senhaRecuperacao
         };
 
@@ -41,17 +42,19 @@ document.addEventListener('DOMContentLoaded', () => {
                 body: JSON.stringify(corpo)
             });
 
-            if (!response.ok) throw new Error('Erro ao cadastrar usuário');
+            if (!response.ok) {
+                const errorData = await response.json();
+                throw new Error(errorData.message || 'Erro ao cadastrar usuário');
+            }
 
             alert('Cadastro realizado com sucesso!');
             window.location.href = '../Tela_login/index.html';
         } catch (err) {
-            alert('Erro ao cadastrar. Verifique os dados e tente novamente.');
+            alert(`Erro ao cadastrar: ${err.message}. Verifique os dados e tente novamente.`);
         }
     });
 
-    voltarBtn.addEventListener('click', (event) => {
-        event.preventDefault();
+    voltarBtn.addEventListener('click', () => {
         window.location.href = '../Tela_login/index.html';
     });
 });

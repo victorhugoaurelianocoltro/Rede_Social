@@ -3,26 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Recuperar Senha</title>
+    <title>Recuperar Senha - Moments</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <header>
-        <div class="logo"></div>
-            <li>Moments</li>
+        <div class="logo">
+            <a href="../Tela_login/index.html" class="back-button">❮ Moments</a>
         </div>
     </header>
     <main>
-    <div class="container">
-        <h1>RECUPERAR A SENHA</h1>
-        <input type="email" id="email" placeholder="Email">
-        <p class="mensagem-codigo">Enviamos um código para seu email</p>
-        <input type="text" id="codigo" placeholder="Código do Email">
-        <button id="logIn">Log In</button>
-        <p id="mensagem"></p>
-    </div>
-</main>
+        <div class="container">
+            <h1>RECUPERAR A SENHA</h1>
+            <input type="email" id="email" placeholder="Email" required>
+            <input type="text" id="wordKey" placeholder="Palavra-chave" required>
+            <button id="recuperarSenhaBtn">Verificar e Mostrar Senha</button>
+            <p id="mensagem"></p>
+            <button id="voltarLoginBtn" class="secondary-button">Voltar ao Login</button>
+        </div>
+    </main>
     <script src="script.js"></script>
 </body>
 </html>
